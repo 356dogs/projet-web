@@ -6,8 +6,9 @@
     <title>Memory Match</title>
 </head>
 <body>
+    <!-- Selection de la langue -->
     <div class="selecteur de langue">
-        <select id="languageSelect" onchange="changerLangue()">
+        <select id="LanguageSelect" onchange="changerLangue()">
             <option value="fr">Français</option>
             <option value="en">English</option>
         </select>
@@ -18,41 +19,6 @@
     <button data-lang="start">Commencer</button>
     <button data-lang="quit">Quitter</button>
     
-    <script>
-        // Dictionnaire qui contient les traductions avec la selection de langue.        
-        const Langue = {
-            fr: {
-                Langue_en: "Anglais",
-                Langue_fr: "Français",
-                title: "Memory Match",
-                subtitle: "Le jeu de mémoire",
-                start: "Commencer",
-                quit: "Quitter"
-            },
-            en: {
-                Langue_en: "English",
-                Langue_fr: "French",
-                title: "Memory Match",
-                subtitle: "The Memory Game",
-                start: "Start",
-                quit: "Quit"
-            },
-        };
-
-        function changerLangue() {
-            const langue = document.getElementById('languageSelect').value;
-            const elements = document.querySelectorAll('[data-lang]');
-            //elements est un ensemble d'informations concernant la page web
-            //il nous faut seulement la 
-            elements.forEach(element => {
-                const key = element.getAttribute('data-lang');
-                element.textContent = Langue[langue][key];
-                // On change les elements a partir des valeurs 
-            
-            //testest skibidi skibidi
-
-       });
-        }
-    </script>
+    <script src="Gestion_Langue.js"></script>
 </body>
 </html>
