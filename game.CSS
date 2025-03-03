@@ -1,0 +1,13 @@
+body{
+    background-image: url("image/luigi_casino.png");
+    background-size: cover;
+}
+
+p{
+    text-align: right;
+}
+
+.carte{
+    width: 100px;
+    height: 150px;
+}
