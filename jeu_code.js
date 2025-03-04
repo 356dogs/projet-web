@@ -6,16 +6,16 @@ class Carte{
     }    
 }
 
-new Carte(1, "placeholder.png");
-new Carte(2, "placeholder.png");
-new Carte(3, "placeholder.png");
-new Carte(4, "placeholder.png");
-new Carte(5, "placeholder.png");
-new Carte(6, "placeholder.png");
-new Carte(7, "placeholder.png");
-new Carte(8, "placeholder.png");
-new Carte(9, "placeholder.png");
-new Carte(10, "placeholder.png");
+let carte1 = new Carte(1, "placeholder.png", "back.png");
+let carte2 = new Carte(2, "placeholder.png", "back.png");
+let carte3 = new Carte(3, "placeholder.png", "back.png");
+let carte4 = new Carte(4, "placeholder.png", "back.png");
+let carte5 = new Carte(5, "placeholder.png", "back.png");
+let carte6 = new Carte(6, "placeholder.png", "back.png");
+let carte7 = new Carte(7, "placeholder.png", "back.png");
+let carte8 = new Carte(8, "placeholder.png", "back.png");
+let carte9 = new Carte(9, "placeholder.png", "back.png");
+let carte10 = new Carte(10, "placeholder.png", "back.png");
 
 function etude_grille(x,y){
     /*
@@ -34,11 +34,12 @@ function etude_grille(x,y){
     }
 }
 
-function creation_grille(x,y){
-    /*
+function creation_grille(x,y,paires){
+    /*creer une grille de jeu de x colonnes et y lignes remplie de paires d'objets de classe Carte
     *
     */
-
+    grille = []
+    for (let i = 0; i < )
 }
 
 
