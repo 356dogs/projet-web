@@ -1,31 +1,31 @@
-import { Carte, cards } from './Gestion_carte.js';
+import { Carte, cards, liste_cartes } from './Gestion_carte.js';
 
 //js n'a pas de fonction randint(min,max) prédefinie donc on doit la creer
 function randomInt(min, max) {
-return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function etude_grille(x, y) {
-/*
- *etude_grille va etudier la forme de la grille et le nombre de paires de carte a creer
- * param x = le nombre de colonne de la matrice
- * param y = le nombre de ligne de la matrice
- */
-let totalCartes = x * y;
-if (totalCartes % 2 !== 0) {
-  throw new Error('Le nombre total de cartes doit etre pair');
-} else {
-  // creation de la grille de x*y cartes
-  let grille = [];
+  function etude_grille(x, y) {
+  /*
+  *etude_grille va etudier la forme de la grille et le nombre de paires de carte a creer
+  * param x = le nombre de colonne de la matrice
+  * param y = le nombre de ligne de la matrice
+  */
+  let totalCartes = x * y;
+  if (totalCartes % 2 !== 0) {
+    throw new Error('Le nombre total de cartes doit etre pair');
+  } else {
+    // creation de la grille de x*y cartes
+    let grille = [];
 
-  for (let lign = 0; lign < y; lign++) {
-    grille.push([]);
-    for (let col = 0; col < x; col++) {
-      grille[lign].push('Placeholder');
+    for (let lign = 0; lign < y; lign++) {
+      grille.push([]);
+      for (let col = 0; col < x; col++) {
+        grille[lign].push('Placeholder');
+      }
     }
+    return [totalCartes, grille];
   }
-  return [totalCartes, grille];
-}
 }
 
 function setup_emplacements(x,y){
@@ -40,16 +40,16 @@ function setup_emplacements(x,y){
     return emplacements; 
 }
 
-function creation_grille(x,y){
+function creation_grille(x,y,liste_cartes){
   /*creer une grille de jeu de x colonnes et y lignes remplie de paires d'objets de classe Carte
   *
   */
-  let liste_cartes = [carte1_1, carte1_2, carte2_1, carte2_2, carte3_1, carte3_2, carte4_1, carte4_2, carte5_1, carte5_2, carte6_1, carte6_2, carte7_1, carte7_2, carte8_1, carte8_2, carte9_1, carte9_2, carte10_1, carte10_2]; 
-  // on prend les variables de la fonction etude_grille
+ // on prend les variables de la fonction etude_grille
   let resultats_etude_grille = etude_grille(x, y);
   let nb_cartes = resultats_etude_grille[0];
   let grille = resultats_etude_grille[1];
   let emplacements = setup_emplacements(x,y);
+  
   for (let carte_indexe = 0; carte_indexe < nb_cartes; carte_indexe++){
     let random_index = randomInt(0, emplacements.length);
     let random_emplacement = emplacements[random_index];
@@ -60,6 +60,7 @@ function creation_grille(x,y){
   }  
   return grille
 }
+
 
 
 
