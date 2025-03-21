@@ -49,7 +49,7 @@ function creation_grille(x,y,liste_cartes){
   let nb_cartes = resultats_etude_grille[0];
   let grille = resultats_etude_grille[1];
   let emplacements = setup_emplacements(x,y);
-  
+
   for (let carte_indexe = 0; carte_indexe < nb_cartes; carte_indexe++){
     let random_index = randomInt(0, emplacements.length);
     let random_emplacement = emplacements[random_index];
@@ -61,10 +61,42 @@ function creation_grille(x,y,liste_cartes){
   return grille
 }
 
+function insertion_html_grille(x,y){
+   // Get the body element to append our grid
+   const body = document.querySelector('body');
+    
+   // Remove existing grid if any
+   const existingGrids = document.querySelectorAll('grid');
+   existingGrids.forEach(grid => grid.remove());
+  }
 
-
-
-
+  function createGrid(rows, cols) {
+    const container = document.createElement('div');
+    container.className = 'grid-container';
+    
+    // Set CSS Grid properties
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    container.style.gap = '10px';
+    container.style.padding = '20px';
+    
+    // Create cells based on rows and columns
+    for (let i = 0; i < rows * cols; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        cell.dataset.index = i;
+        
+        // Create image element for the card
+        const img = document.createElement('img');
+        img.src = "cartes/Carte_back.jpg";
+        img.className = 'card-image';
+        
+        cell.appendChild(img);
+        container.appendChild(cell);
+    }
+    
+    return container;
+}
 
 
 
