@@ -40,8 +40,7 @@ let carte10_2 = new Carte("cartes/Carte10.png", "cartes/Carte_back.jpg");
 
 let liste_cartes = [carte1_1, carte1_2, carte2_1, carte2_2, carte3_1, carte3_2, carte4_1, carte4_2, carte5_1, carte5_2, carte6_1, carte6_2, carte7_1, carte7_2, carte8_1, carte8_2, carte9_1, carte9_2, carte10_1, carte10_2]; 
 
-
-
+export { liste_cartes, Carte };
 
 
 
