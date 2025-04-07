@@ -1,3 +1,4 @@
+<html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +11,17 @@
     <header>
         <h1>Memory Game 4x2</h1>
     </header>
-    <!--On passe a la grille du jeu-->
-    <div class="Grille-jeu" id="Grille-jeu">
-        
-    </div>
+    <div class="Grille-jeu" id="Grille-jeu"></div>
 
-    <script type="module"> // on utilise le module JS pour importer les fichiers JS
-        import { liste_cartes } from '/Gestion_Cartes.js';
-        import { creation_grille } from '/Gestion_Grille.js';
-        
+    <script type="module">
+        import { Creation_grille, Gestion_retournement } from './Gestion_Grille.js';
+        import { liste_cartes } from './Gestion_Cartes.js';
+
+        let x_grille = 5;
+        let y_grille = 4;
+
         // Creation de la grille aleatoire 
-        const grille = creation_grille(4, 2, liste_cartes);
+        const grille = Creation_grille(x_grille, y_grille, liste_cartes);
         
         // On saisie la grille html dans le code
         const grille_html = document.getElementById('Grille-jeu');
@@ -28,31 +29,28 @@
         //on a besoin d'un compteur pour savoir combien de cartes on a retourner.
         let nb_cartes_retourne = 0;
         
-        for(x = 1; x < 5; x++){ // 4 colonnes
-            for(y=1; y < 3; y++){ //2 lignes
-            //pour chaque carte on va cercher les images des cartes de grille
-            const DivCarte = document.createElement('div');
-            DivCarte.classname = 'carte'; // pour le CSS
-            DivCarte.id = 'carte' + x + "_" + y; // pour le JS
+        for(let y = 1; y < y_grille+1; y++){ // y colonnes
+            for(let x = 1; x < x_grille+1; x++){ // x lignes
+                const divCarte = document.createElement('div');
+                divCarte.className = 'carte';
+                divCarte.id = 'carte' + x + "_" + y;
 
-            //après qu'on ai la carte il faut chercher les images et les inserer dans la balise div 'carte'
-            const Back_side = document.createElement('img');
-            Back_side.src = grille[x-1][y-1].back_side;
+                const backSide = document.createElement('img');
+                backSide.className = 'carte-back';
+                backSide.src = grille[y-1][x-1].back_side;
 
-            const Front_side = document.createElement('img');
-            Front_side.src = grille[x-1][y-1].front_side;
-            
-            // on va ajouter les images dans la div carte
-            cardDiv.appendChild(Back_side);
-            cardDiv.appendChild(Front_side);
+                const frontSide = document.createElement('img');
+                frontSide.className = 'carte-front';
+                frontSide.src = grille[y-1][x-1].front_side;
+                
+                divCarte.appendChild(backSide);
+                divCarte.appendChild(frontSide);
 
-            // maintenant qu'on a les images il faut ajouter un event qui gère le click de souris
-            cardDiv.addEventListener('click', () => {// on definie directement les instructions qui vont être executer
-                // on va retourner la carte
-                gestion_retournement(x,y)
-            });
-            // on peut enfin ajouter le div de la carte a la grille
-            grille_html.appendChild(DivCarte);
+                divCarte.addEventListener('click', () => {
+                    Gestion_retournement(grille, nb_cartes_retourne, x, y);
+                });
+
+                grille_html.appendChild(divCarte);
             }
         }
     </script>

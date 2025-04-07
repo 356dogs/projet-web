@@ -8,13 +8,10 @@ body {
     min-height: 100vh;
 }
 
-.game-container {
+.Grille-jeu {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-}
-
-.grid-4x2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -22,7 +19,7 @@ body {
     perspective: 1000px;
 }
 
-.card {
+.carte {
     aspect-ratio: 2/3;
     position: relative;
     transform-style: preserve-3d;
@@ -39,16 +36,8 @@ body {
     object-fit: cover;
 }
 
-.front {
-    transform: rotateY(180deg);
-}
-
-.card.flipped {
-    transform: rotateY(180deg);
-}
-
 /*effet de levitement sur la carte (quand la souris passe dessus)*/
-.card:hover {
-    transform: scale(1.05);
+.carte:hover {
+    transform: scale(1.005);
     transition: transform 0.3s;
 }
