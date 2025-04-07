@@ -61,45 +61,16 @@ function creation_grille(x,y,liste_cartes){
   return grille
 }
 
-function insertion_html_grille(x,y){
-   // Get the body element to append our grid
-   const body = document.querySelector('body');
+function Gestion_retournement(Grille,nb_carte_retourne,x,y){
+  /*3 cas
+  *param Grille = la grille d'objet Carte 
+  */
+  // il y a un cas de figure interessant
+  if (nb_carte_retourne == 2){
+    // on doit verifier si les deux cartes sont identiques
     
-   // Remove existing grid if any
-   const existingGrids = document.querySelectorAll('grid');
-   existingGrids.forEach(grid => grid.remove());
-  }
-
-  function createGrid(rows, cols) {
-    const container = document.createElement('div');
-    container.className = 'grid-container';
-    
-    // Set CSS Grid properties
-    container.style.display = 'grid';
-    container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-    container.style.gap = '10px';
-    container.style.padding = '20px';
-    
-    // Create cells based on rows and columns
-    for (let i = 0; i < rows * cols; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'grid-cell';
-        cell.dataset.index = i;
-        
-        // Create image element for the card
-        const img = document.createElement('img');
-        img.src = "cartes/Carte_back.jpg";
-        img.className = 'card-image';
-        
-        cell.appendChild(img);
-        container.appendChild(cell);
     }
-    
-    return container;
 }
-
-
-
 
 
 

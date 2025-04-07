@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game 4x2</title>
+    <link rel="stylesheet" href="grille-4-2.css">
+</head>
+<body>
+    <header>
+        <h1>Memory Game 4x2</h1>
+    </header>
+    <!--On passe a la grille du jeu-->
+    <div class="Grille-jeu" id="Grille-jeu">
+        
+    </div>
+
+    <script type="module"> // on utilise le module JS pour importer les fichiers JS
+        import { liste_cartes } from '/Gestion_Cartes.js';
+        import { creation_grille } from '/Gestion_Grille.js';
+        
+        // Creation de la grille aleatoire 
+        const grille = creation_grille(4, 2, liste_cartes);
+        
+        // On saisie la grille html dans le code
+        const grille_html = document.getElementById('Grille-jeu');
+
+        //on a besoin d'un compteur pour savoir combien de cartes on a retourner.
+        let nb_cartes_retourne = 0;
+        
+        for(x = 1; x < 5; x++){ // 4 colonnes
+            for(y=1; y < 3; y++){ //2 lignes
+            //pour chaque carte on va cercher les images des cartes de grille
+            const DivCarte = document.createElement('div');
+            DivCarte.classname = 'carte'; // pour le CSS
+            DivCarte.id = 'carte' + x + "_" + y; // pour le JS
+
+            //après qu'on ai la carte il faut chercher les images et les inserer dans la balise div 'carte'
+            const Back_side = document.createElement('img');
+            Back_side.src = grille[x-1][y-1].back_side;
+
+            const Front_side = document.createElement('img');
+            Front_side.src = grille[x-1][y-1].front_side;
+            
+            // on va ajouter les images dans la div carte
+            cardDiv.appendChild(Back_side);
+            cardDiv.appendChild(Front_side);
+
+            // maintenant qu'on a les images il faut ajouter un event qui gère le click de souris
+            cardDiv.addEventListener('click', () => {// on definie directement les instructions qui vont être executer
+                // on va retourner la carte
+                gestion_retournement(x,y)
+            });
+            // on peut enfin ajouter le div de la carte a la grille
+            grille_html.appendChild(DivCarte);
+            }
+        }
+    </script>
+</body>
+</html>

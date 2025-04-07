@@ -2,6 +2,7 @@ class Carte {
   constructor(front_side, back_side) {
       this.front_side = front_side;
       this.back_side = back_side;
+      this.est_retourner = false;
       
   }    
 }
