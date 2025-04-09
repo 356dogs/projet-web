@@ -9,7 +9,8 @@
 </head>
 <body>
     <header>
-        <h1>Memory Jeu</h1>
+        <h1>Jeu en cours</h1>
+        <h3>TEMPS : 0</h3>
     </header>
     <div class="Grille-jeu" id="Grille-jeu">
 
@@ -18,9 +19,10 @@
     <script type="module">
         import { Creation_grille, Gestion_retournement} from './Gestion_Grille.js';
         import { liste_cartes } from './Gestion_Cartes.js';
-
-        let x_grille = 4;
-        let y_grille = 2;
+        import { difffacile } from './Gestion_Grille.js';
+        import { diffmoyen } from './Gestion_Grille.js';
+        import { diffdifficile } from './Gestion_Grille.js';
+        
 
         // Creation de la grille aleatoire 
         const grille = Creation_grille(x_grille, y_grille, liste_cartes);

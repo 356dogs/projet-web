@@ -5,15 +5,22 @@
     <meta name="Memory Match" content="width=device-width, initial-scale=1.0">
     <title>Memory Match</title>
     <link rel="stylesheet" href="main.html.CSS">
+    
 </head>
     <body> 
+        <script type="module">
+            import { difffacile } from './Gestion_Cartes.js';
+            import { diffmoyen } from './Gestion_Cartes.js';
+            import { diffdifficile } from './Gestion_Cartes.js';
+        </script>
         <h1>Jeu du Memory</h1>
         pseudo:
         <input type="text" name="pseudo" id="pseudo"/><br> <br>
         
-        <a href="game.html">
-            <input type="button" value="Commencer difficulté 1" name="commencer" id="bouton"/>
-            <input type="button" value="Commencer difficulté 2" name="commencer" id="bouton"/>
+        <a href="jeuMemory.html">
+            <input type="button" value="Facile" name="commencer" id="bouton" onclick=difffacile()/>
+            <input type="button" value="Moyen" name="commencer" id="bouton" onclick=diffmoyen()/>
+            <input type="button" value="Difficile" name="commencer" id="bouton" onclick=diffdifficile()/>
         </a>   </br></br>
     
         <input type="button" value="Record" name="record" id="bouton"/>
