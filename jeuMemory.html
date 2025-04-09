@@ -18,18 +18,21 @@
 
     <script type="module">
 
-        import { Creation_grille, Gestion_retournement} from './Gestion_Grille.js';
         import { liste_cartes } from './Gestion_Cartes.js';
-        import { difffacile, diffmoyen, diffdifficile } from './Gestion_Cartes.js';
+        import { Creation_grille, Gestion_retournement} from './Gestion_Grille.js';
 
        window.onload = () => {
-            const difficulty = localStorage.getItem('difficulty');
-            if (difficulty === 'facile') {
-                difffacile();
-            } else if (difficulty === 'moyen') {
-                diffmoyen();
-            } else if (difficulty === 'difficile') {
-                diffdifficile();
+            const difficulte = localStorage.getItem('difficulte');
+            console.log(difficulty);
+            if (difficulty === 'Facile') {
+                x_grille = 4;
+                y_grille = 2;
+            } else if (difficulty === 'Moyen') {
+                x_grille = 6;
+                y_grille = 2;
+            } else if (difficulty === 'Difficile') {
+                x_grille = 4;
+                y_grille = 3;
             }
         };
         

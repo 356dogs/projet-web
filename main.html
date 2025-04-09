@@ -24,7 +24,7 @@
         <input type="text" name="pseudo" id="pseudo"/><br> <br>
         
         <a href="jeuMemory.html">
-            <input type="button" value="Facile" name="commencer" id="bouton" onclick="Difficulty('facile')"/>
+            <input type="button" value="Facile" name="commencer" id="bouton" onclick="{localStorage.setItem('difficulte', 'Facile');}"/>
             <input type="button" value="Moyen" name="commencer" id="bouton" onclick="Difficulty('moyen')"/>
             <input type="button" value="Difficile" name="commencer" id="bouton" onclick="Difficulty('difficile')"/>
         </a>   </br></br>
