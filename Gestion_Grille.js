@@ -5,7 +5,7 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-  function Etude_grille(x, y) {
+function Etude_grille(x, y) {
   /*
   *etude_grille va etudier la forme de la grille et le nombre de paires de carte a creer
   * param x = le nombre de colonne de la matrice
@@ -56,19 +56,57 @@ function Creation_grille(x,y,liste_cartes){
     //on a notre position dans grille et notre index dans emplacements
     //on peut maintenant inserer la carte dans la grille et supprimer l'emplacement de la liste
     grille[random_emplacement[0]][random_emplacement[1]] = liste_cartes[carte_indexe]
-    emplacements.splice(random_index, 1);   
+    emplacements.splice(random_index, 1); 
+    //on met a jour le x et le y de la carte en fonction de son emplacement
+    liste_cartes[carte_indexe].x = random_emplacement[0];
+    liste_cartes[carte_indexe].y = random_emplacement[1];  
   }  
   return grille
 }
 
-function Gestion_retournement(Grille,nb_carte_retourne,x,y){
-  /*3 cas
-  *param Grille = la grille d'objet Carte 
-  */
-  // il y a un cas de figure interessant
-  console.log(nb_carte_retourne,x,y)
-    
+async function Gestion_retournement(Grille, liste_retournement, carte) {
+  /* Gère le retournement des cartes et la validation de ce retournement */
+  
+  // Protection contre plus de 2 cartes
+  if (liste_retournement.length > 2) {
+      return liste_retournement;
+  }
+
+  // Retourne la nouvelle carte
+  const nouvelleCarte = liste_retournement[liste_retournement.length - 1];
+  nouvelleCarte.classList.add('flipped');
+  carte.est_retourner = true;
+
+  // Si on a 2 cartes, vérifie si elles correspondent
+  if (liste_retournement.length === 2) {
+      const carte1 = liste_retournement[0];
+      const carte2 = liste_retournement[1];
+      
+      const srcCarte1 = carte1.querySelector('.carte-front').src;
+      const srcCarte2 = carte2.querySelector('.carte-front').src;
+
+      if (srcCarte1 === srcCarte2) {
+          // Les cartes correspondent
+          carte1.classList.add('matched');
+          carte2.classList.add('matched');
+          return [];
+      } else {
+          // Les cartes ne correspondent pas
+          await new Promise(resolve => {
+              setTimeout(() => {
+                  carte1.classList.remove('flipped');
+                  carte2.classList.remove('flipped');
+                  resolve();
+              }, 600);
+          });
+          return [];
+      }
+  }
+
+  return liste_retournement;
 }
+  
+
 
 
 function difffacile(){
