@@ -66,13 +66,12 @@ function Gestion_retournement(Grille,nb_carte_retourne,x,y){
   *param Grille = la grille d'objet Carte 
   */
   // il y a un cas de figure interessant
-  if (nb_carte_retourne == 2){
-    // on doit verifier si les deux cartes sont identiques
+  console.log(nb_carte_retourne,x,y)
     
-    }
 }
 
-export { Creation_grille, Gestion_retournement };
+
+export { Creation_grille, Gestion_retournement};
 
 
 
