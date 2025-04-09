@@ -53,11 +53,11 @@
                 divCarte.appendChild(backSide);
                 divCarte.appendChild(frontSide);
 
-                divCarte.addEventListener('click', () => {
-                    if (!divCarte.classList.contains('flipped')) {
-                        liste_retournement.push(divCarte); // on ajoute la carte retournée à la liste
-                        liste_retournement = Gestion_retournement(grille, liste_retournement,grille[y-1][x-1]); 
-                    }
+                divCarte.addEventListener('click', async () => {
+                if (!divCarte.classList.contains('flipped') && liste_retournement.length < 2) {
+                    liste_retournement.push(divCarte);
+                    liste_retournement = await Gestion_retournement(grille, liste_retournement, grille[y-1][x-1]);
+                }
                 });
 
                 divLigne.appendChild(divCarte);
