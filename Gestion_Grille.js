@@ -71,9 +71,6 @@ function Gestion_retournement(Grille,nb_carte_retourne,x,y){
 }
 
 
-export { Creation_grille, Gestion_retournement};
-
-
 function difffacile(){
   let x_grille = 4;
   let y_grille = 2;
@@ -92,7 +89,7 @@ function diffdifficile(){
   return (x_grille,y_grille)
 }
 
-
+export { Creation_grille, Gestion_retournement, difffacile, diffdifficile, diffmoyen};
 
 
 
