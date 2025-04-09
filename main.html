@@ -12,16 +12,25 @@
             import { difffacile } from './Gestion_Cartes.js';
             import { diffmoyen } from './Gestion_Cartes.js';
             import { diffdifficile } from './Gestion_Cartes.js';
+
+            function Difficulty(difficulty) {
+        localStorage.setItem('difficulty', difficulty);
+        window.location.href = 'jeuMemory.html';
+         }
+
         </script>
         <h1>Jeu du Memory</h1>
         pseudo:
         <input type="text" name="pseudo" id="pseudo"/><br> <br>
         
         <a href="jeuMemory.html">
-            <input type="button" value="Facile" name="commencer" id="bouton" onclick=difffacile()/>
-            <input type="button" value="Moyen" name="commencer" id="bouton" onclick=diffmoyen()/>
-            <input type="button" value="Difficile" name="commencer" id="bouton" onclick=diffdifficile()/>
+            <input type="button" value="Facile" name="commencer" id="bouton" onclick="Difficulty('facile')"/>
+            <input type="button" value="Moyen" name="commencer" id="bouton" onclick="Difficulty('moyen')"/>
+            <input type="button" value="Difficile" name="commencer" id="bouton" onclick="Difficulty('difficile')"/>
         </a>   </br></br>
-    
+
+
+        <a href="score.html">
         <input type="button" value="Record" name="record" id="bouton"/>
+        </a>
     </body>

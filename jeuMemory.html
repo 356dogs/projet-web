@@ -17,11 +17,21 @@
     </div>
 
     <script type="module">
+
         import { Creation_grille, Gestion_retournement} from './Gestion_Grille.js';
         import { liste_cartes } from './Gestion_Cartes.js';
-        import { difffacile } from './Gestion_Grille.js';
-        import { diffmoyen } from './Gestion_Grille.js';
-        import { diffdifficile } from './Gestion_Grille.js';
+        import { difffacile, diffmoyen, diffdifficile } from './Gestion_Cartes.js';
+
+       /* window.onload = () => {
+            const difficulty = localStorage.getItem('difficulty');
+            if (difficulty === 'facile') {
+                difffacile();
+            } else if (difficulty === 'moyen') {
+                diffmoyen();
+            } else if (difficulty === 'difficile') {
+                diffdifficile();
+            }
+        };*/
         
 
         // Creation de la grille aleatoire 
