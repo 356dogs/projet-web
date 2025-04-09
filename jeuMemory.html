@@ -22,6 +22,8 @@
         let x_grille = 4;
         let y_grille = 2;
 
+        let liste_retournement = []; // liste des Divs de cartes retournées
+
         // Creation de la grille aleatoire 
         const grille = Creation_grille(x_grille, y_grille, liste_cartes);
         
@@ -52,12 +54,10 @@
                 divCarte.appendChild(frontSide);
 
                 divCarte.addEventListener('click', () => {
-                    nb_cartes_retourne++;
-                    grille[y-1][x-1].retourne = true;
-                    //on retourne la carte dans le html
-                    divCarte.classList.add('flipped');
-                    
-                    Gestion_retournement(grille, nb_cartes_retourne, x, y);
+                    if (!divCarte.classList.contains('flipped')) {
+                        liste_retournement.push(divCarte); // on ajoute la carte retournée à la liste
+                        liste_retournement = Gestion_retournement(grille, liste_retournement,grille[y-1][x-1]); 
+                    }
                 });
 
                 divLigne.appendChild(divCarte);
