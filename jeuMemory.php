@@ -18,20 +18,31 @@
 
     <script type="module">
 
-        import { Creation_grille, Gestion_retournement} from './Gestion_Grille.js';
         import { liste_cartes } from './Gestion_Cartes.js';
-        import { difffacile, diffmoyen, diffdifficile } from './Gestion_Cartes.js';
+        import { Creation_grille, Gestion_retournement} from './Gestion_Grille.js';
 
-       window.onload = () => {
-            const difficulty = localStorage.getItem('difficulty');
-            if (difficulty === 'facile') {
-                difffacile();
-            } else if (difficulty === 'moyen') {
-                diffmoyen();
-            } else if (difficulty === 'difficile') {
-                diffdifficile();
-            }
-        };
+        const difficulte = localStorage.getItem('difficulte');
+        console.log('Difficulte:', difficulte); 
+
+        let x_grille = 4; 
+        let y_grille = 2; // Valeurs par défaut
+        
+        switch(difficulte) {
+            case 'Facile':
+                x_grille = 4;
+                y_grille = 2;
+                break;
+            case 'Moyen':
+                x_grille = 4;
+                y_grille = 3;
+                break;
+            case 'Difficile':
+                x_grille = 5;
+                y_grille = 4;
+                break;
+            default:
+                console.log('Difficulté non reconnue, utilisation des valeurs par défaut');
+        }
         
 
         let liste_retournement = []; // liste des Divs de cartes retournées
