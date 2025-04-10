@@ -15,7 +15,7 @@
 
             function Difficulty(difficulty) {
         localStorage.setItem('difficulty', difficulty);
-        window.location.href = 'jeuMemory.html';
+        window.location.href = 'jeuMemory.php';
          }
 
         </script>
@@ -23,14 +23,14 @@
         pseudo:
         <input type="text" name="pseudo" id="pseudo"/><br> <br>
         
-        <a href="jeuMemory.html">
+        <a href="jeuMemory.php">
             <input type="button" value="Facile" name="commencer" id="bouton" onclick="Difficulty('facile')"/>
             <input type="button" value="Moyen" name="commencer" id="bouton" onclick="Difficulty('moyen')"/>
             <input type="button" value="Difficile" name="commencer" id="bouton" onclick="Difficulty('difficile')"/>
         </a>   </br></br>
 
 
-        <a href="score.html">
+        <a href="score.php">
         <input type="button" value="Record" name="record" id="bouton"/>
         </a>
     </body>
