@@ -42,8 +42,7 @@
                 break;
             default:
                 console.log('Difficulté non reconnue, utilisation des valeurs par défaut');
-        }
-        
+        }        
 
         let liste_retournement = []; // liste des Divs de cartes retournées
 
