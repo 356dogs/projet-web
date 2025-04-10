@@ -64,9 +64,9 @@ function Creation_grille(x,y,liste_cartes){
   return grille
 }
 
-async function Gestion_retournement(Grille, liste_retournement, carte) {
+async function Gestion_retournement(Grille, liste_retournement,nb_actions,nb_paires_retourne,nb_paires_a_retourner) {
   /* Gère le retournement des cartes et la validation de ce retournement */
-  
+  let victoire = false;
   // Protection contre plus de 2 cartes
   if (liste_retournement.length > 2) {
       return liste_retournement;
@@ -75,7 +75,6 @@ async function Gestion_retournement(Grille, liste_retournement, carte) {
   // Retourne la nouvelle carte
   const nouvelleCarte = liste_retournement[liste_retournement.length - 1];
   nouvelleCarte.classList.add('flipped');
-  carte.est_retourner = true;
 
   // Si on a 2 cartes, vérifie si elles correspondent
   if (liste_retournement.length === 2) {
@@ -86,24 +85,42 @@ async function Gestion_retournement(Grille, liste_retournement, carte) {
       const srcCarte2 = carte2.querySelector('.carte-front').src;
 
       if (srcCarte1 === srcCarte2) {
-          // Les cartes correspondent
-          carte1.classList.add('matched');
-          carte2.classList.add('matched');
-          return [];
-      } else {
+        // Les cartes correspondent
+        await new Promise(resolve => {
+            setTimeout(() => {
+                // le scale annule la rotation de la carte donc on doit le refaire en mm temps
+                carte1.style.transform = 'scale(0.8) rotateY(180deg)';  
+                carte2.style.transform = 'scale(0.8) rotateY(180deg)';
+                nb_actions++;
+                nb_paires_retourne++;
+                resolve();
+            }, 400);
+        }); 
+        if (nb_paires_retourne === nb_paires_a_retourner) {
+          victoire = true;
+        }
+        liste_retournement = [];
+    } else {
           // Les cartes ne correspondent pas
           await new Promise(resolve => {
               setTimeout(() => {
                   carte1.classList.remove('flipped');
                   carte2.classList.remove('flipped');
+                  nb_actions++;
+                  
                   resolve();
               }, 600);
           });
-          return [];
+          liste_retournement = [];
       }
   }
-
-  return liste_retournement;
+  
+  return [
+    liste_retournement,
+    nb_actions,
+    nb_paires_retourne,
+    victoire
+  ];
 }
 
 export { Creation_grille, Gestion_retournement};

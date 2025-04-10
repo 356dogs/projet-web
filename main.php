@@ -1,10 +1,42 @@
+<?php
+
+$host = 'localhost'; 
+$dbname = 'memory'; 
+$username = 'root'; 
+$password = ''; 
+
+try {
+    $connection = new PDO(
+        'mysql:host=localhost;port=3307;dbname=memory_bd;charset=utf8',
+        'root',     // nom utilisateur
+        '',         // mdp, laisser vide si pas de mdp
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pseudo'])) {
+    $pseudo = htmlspecialchars($_POST['pseudo']);
+
+    $stmt = $pdo->prepare("INSERT INTO utilisateur (pseudo) VALUES (:pseudo)");
+    $stmt->bindParam(':pseudo', $pseudo);
+
+    if ($stmt->execute()) {
+            echo "<p>Bienvenue, $pseudo ! Votre pseudo a été enregistré.</p>";
+    } else {
+            echo "<p>Erreur lors de l'enregistrement du pseudo.</p>";
+    }
+}
+}catch(PDOException $erreur) {
+    die("Erreur de connection: " . $erreur->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="Memory Match" content="width=device-width, initial-scale=1.0">
     <title>Memory Match</title>
-    <link rel="stylesheet" href="main.html.CSS">
+    <link rel="stylesheet" href="main.css">
     
 </head>
 <body>

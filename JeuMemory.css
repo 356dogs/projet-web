@@ -3,21 +3,39 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh; 
 }
 
-.header{
+header {
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(66, 66, 66, 0.3);
 }
+
 .Grille-jeu {
     display: flex;
-    flex-direction: column;  /* Stack DivLignes vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1px;  
-    margin: auto;
-    padding: 40px;
+    gap: 1px;
+    margin: 10%;
+}
+
+aside {
+    min-width: 200px;
+    padding: 20px;
+    background: rgba(66, 66, 66, 0.3);
+    border-radius: 10px;
+    align-self: flex-start;
+    margin-top: 100px; /* Space for header */
 }
 
 .DivLigne{
@@ -29,12 +47,12 @@ body {
 
 .DivCarte {
     transform-style: preserve-3d;
-    width: 108.6px;
-    height: 166.6px;
     position: relative;
     margin: 1px;
     transition: transform 0.6s;
     cursor: pointer;
+    width: 100px; /* valeurs par defaut*/
+    height: 150px;
 }
 
 .carte-front {
@@ -54,7 +72,6 @@ body {
     position: absolute;
     backface-visibility: hidden;
     transform: rotateY(0deg);
-    border-radius: 16px;
 }
 
 .divCarte:hover{
@@ -67,15 +84,5 @@ body {
 }
 
 img{
-    border-radius: 16px;
-}
-
-h1 {
-    text-align: center;
-}
-
-
-h3 {
-    
-    text-align: center;
+    border-radius: 12px;
 }

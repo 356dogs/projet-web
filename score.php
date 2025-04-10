@@ -1,3 +1,23 @@
+<?php
+//connection a la base de donnée
+try {
+$connection = new PDO(
+    'mysql:host=localhost;port=3307;dbname=memory_bd;charset=utf8',
+    'root',     // nom utilisateur
+    '',         // mdp, laisser vide si pas de mdp
+    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+);
+// cherche tout les utilisateurs et leurs scores
+$query_safe = $connection->prepare("SELECT utiPseudo, utiHighscore FROM utilisateur ORDER BY utiHighscore DESC");
+$query_safe->execute();
+//
+$resultats = $query_safe->fetchAll(PDO::FETCH_ASSOC);
+
+} catch(PDOException $erreur) {
+    die("Erreur de connection: " . $erreur->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,22 +28,24 @@
     
 </head>
     <body> 
+        <center>
         <a href="main.php">
         <h2>retour</h2>
         </a>
         <h2>
-        <center>
-        <table border>
+        <table border="1" cellspacing="0" cellpadding="5">
             <tr>
+                <th>Pseudo</th>
                 <th>Point</th>
-                <th>Temps</th>
             </tr>
+            <?php foreach ($resultats as $row): ?>
             <tr>
-                <td></td>
-                <td></td>
+                <td><?php echo htmlspecialchars($row['utiPseudo']); ?></td>
+                <td><?php echo htmlspecialchars($row['utiHighscore']); ?></td>
             </tr>
+            <?php endforeach; ?>
         </table>
-        </center>
+        <center>
         </h2>
     </body>
 </html>

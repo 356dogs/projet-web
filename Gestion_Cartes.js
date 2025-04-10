@@ -4,9 +4,6 @@ class Carte {
       this.back_side = back_side;
       this.x = x;
       this.y = y;
-      this.est_retourner = false;
-
-      
   }    
 }
 // on a besoin de deux instances de la même carte pour former une paire
